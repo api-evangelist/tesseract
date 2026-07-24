@@ -1,0 +1,284 @@
+openapi: 3.0.0
+info:
+  title: Tesseract Public clients insights API
+  description: Client-facing API for vault data, strategies, and performance metrics.
+  version: 0.1.0
+  contact: {}
+servers: []
+tags:
+- name: insights
+paths:
+  /insights/{vaultAddress}/allocations:
+    get:
+      operationId: InsightsController_getAllocations
+      parameters:
+      - name: vaultAddress
+        required: true
+        in: path
+        description: Vault contract address
+        schema:
+          type: string
+      - name: from
+        required: false
+        in: query
+        description: ISO 8601 start date (defaults to 30 days ago)
+        schema:
+          type: string
+      - name: to
+        required: false
+        in: query
+        description: ISO 8601 end date
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllocationHistoryModel'
+      summary: Allocation history for stacked area chart
+      tags:
+      - insights
+  /insights/{vaultAddress}/allocations/latest:
+    get:
+      operationId: InsightsController_getAllocationsLatest
+      parameters:
+      - name: vaultAddress
+        required: true
+        in: path
+        description: Vault contract address
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllocationLatestModel'
+      summary: Current allocation breakdown for pie/donut chart
+      tags:
+      - insights
+  /insights/{vaultAddress}/performance:
+    get:
+      operationId: InsightsController_getPerformance
+      parameters:
+      - name: vaultAddress
+        required: true
+        in: path
+        description: Vault contract address
+        schema:
+          type: string
+      - name: from
+        required: false
+        in: query
+        description: ISO 8601 start date (defaults to 30 days ago)
+        schema:
+          type: string
+      - name: to
+        required: false
+        in: query
+        description: ISO 8601 end date
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerformanceHistoryModel'
+      summary: APY/APR history for line chart
+      tags:
+      - insights
+  /insights/{vaultAddress}/tvl:
+    get:
+      operationId: InsightsController_getTvl
+      parameters:
+      - name: vaultAddress
+        required: true
+        in: path
+        description: Vault contract address
+        schema:
+          type: string
+      - name: from
+        required: false
+        in: query
+        description: ISO 8601 start date (defaults to 30 days ago)
+        schema:
+          type: string
+      - name: to
+        required: false
+        in: query
+        description: ISO 8601 end date
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TvlHistoryModel'
+      summary: TVL and share price history for area chart
+      tags:
+      - insights
+  /insights/{vaultAddress}/summary:
+    get:
+      operationId: InsightsController_getSummary
+      parameters:
+      - name: vaultAddress
+        required: true
+        in: path
+        description: Vault contract address
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryModel'
+      summary: Dashboard summary with KPIs
+      tags:
+      - insights
+components:
+  schemas:
+    AllocationHistoryModel:
+      type: object
+      properties:
+        vaultAddress:
+          type: string
+          example: '0x3b3bdaa4462851621818d2cebc835e077587147a'
+        chainId:
+          type: number
+          example: 1
+        series:
+          type: array
+          items:
+            type: object
+      required:
+      - vaultAddress
+      - chainId
+      - series
+    AllocationLatestModel:
+      type: object
+      properties:
+        vaultAddress:
+          type: string
+          example: '0x3b3bdaa4462851621818d2cebc835e077587147a'
+        chainId:
+          type: number
+          example: 1
+        timestamp:
+          type: string
+          example: '2026-03-01T00:00:00.000Z'
+        blockNumber:
+          type: number
+          example: 24357173
+        allocations:
+          type: array
+          items:
+            type: object
+        totalUsd:
+          type: string
+          example: '422478.39'
+      required:
+      - vaultAddress
+      - chainId
+      - timestamp
+      - blockNumber
+      - allocations
+      - totalUsd
+    SummaryModel:
+      type: object
+      properties:
+        vaultAddress:
+          type: string
+          example: '0x3b3bdaa4462851621818d2cebc835e077587147a'
+        chainId:
+          type: number
+          example: 1
+        currentTvl:
+          type: string
+          example: '422478.39'
+        currentApy:
+          type: string
+          example: '5.234567'
+        tvlChange24h:
+          type: string
+          example: '1234.56'
+        tvlChangePct24h:
+          type: string
+          example: '0.2934'
+        apyAvg7d:
+          type: string
+          example: '5.123456'
+        apyAvg30d:
+          type: string
+          example: '4.987654'
+        totalMarkets:
+          type: number
+          example: 5
+        lastSyncedAt:
+          type: string
+          example: '2026-03-01T00:00:00.000Z'
+        lastBlockNumber:
+          type: number
+          example: 24357173
+        totalDeposited:
+          type: string
+          example: '1000000000'
+        totalWithdrawn:
+          type: string
+          example: '200000000'
+      required:
+      - vaultAddress
+      - chainId
+      - currentTvl
+      - currentApy
+      - tvlChange24h
+      - tvlChangePct24h
+      - apyAvg7d
+      - apyAvg30d
+      - totalMarkets
+      - lastSyncedAt
+      - lastBlockNumber
+      - totalDeposited
+      - totalWithdrawn
+    PerformanceHistoryModel:
+      type: object
+      properties:
+        vaultAddress:
+          type: string
+          example: '0x3b3bdaa4462851621818d2cebc835e077587147a'
+        chainId:
+          type: number
+          example: 1
+        series:
+          type: array
+          items:
+            type: object
+      required:
+      - vaultAddress
+      - chainId
+      - series
+    TvlHistoryModel:
+      type: object
+      properties:
+        vaultAddress:
+          type: string
+          example: '0x3b3bdaa4462851621818d2cebc835e077587147a'
+        chainId:
+          type: number
+          example: 1
+        series:
+          type: array
+          items:
+            type: object
+      required:
+      - vaultAddress
+      - chainId
+      - series

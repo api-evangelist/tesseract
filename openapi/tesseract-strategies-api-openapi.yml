@@ -1,0 +1,101 @@
+openapi: 3.0.0
+info:
+  title: Tesseract Public clients strategies API
+  description: Client-facing API for vault data, strategies, and performance metrics.
+  version: 0.1.0
+  contact: {}
+servers: []
+tags:
+- name: strategies
+paths:
+  /strategies:
+    get:
+      operationId: StrategiesController_getStrategies
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StrategyModel'
+      summary: List all strategies
+      tags:
+      - strategies
+  /strategies/{id}:
+    get:
+      operationId: StrategiesController_getStrategy
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: Strategy UUID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StrategyModel'
+      summary: Get strategy by ID
+      tags:
+      - strategies
+components:
+  schemas:
+    StrategyModel:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+        name:
+          type: string
+          example: Conservative USDC
+        asset:
+          type: string
+          example: USDC
+        description:
+          type: object
+          nullable: true
+          example: Low-risk stablecoin strategy
+        deployerAddress:
+          type: string
+          example: '0xfC6C59AbA3F9D63A351C7Ea1ba0B48714BFdA2da'
+        expectedApy:
+          type: object
+          nullable: true
+          example: 4-6%
+        dashboardDescription:
+          type: object
+          nullable: true
+          example: A conservative stablecoin lending strategy…
+        dashboardWithdrawals:
+          type: object
+          nullable: true
+          example: 24h
+        learnMoreLink:
+          type: object
+          nullable: true
+          example: https://tesseract.fi/strategies/usdc-conservative
+        createdAt:
+          type: string
+          example: '2025-01-15T10:00:00.000Z'
+        updatedAt:
+          type: string
+          example: '2025-01-15T10:00:00.000Z'
+      required:
+      - id
+      - name
+      - asset
+      - description
+      - deployerAddress
+      - expectedApy
+      - dashboardDescription
+      - dashboardWithdrawals
+      - learnMoreLink
+      - createdAt
+      - updatedAt

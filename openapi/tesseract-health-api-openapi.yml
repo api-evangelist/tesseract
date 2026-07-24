@@ -1,0 +1,20 @@
+openapi: 3.0.0
+info:
+  title: Tesseract Public clients health API
+  description: Client-facing API for vault data, strategies, and performance metrics.
+  version: 0.1.0
+  contact: {}
+servers: []
+tags:
+- name: health
+paths:
+  /health:
+    get:
+      operationId: HealthController_checkHealth
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      summary: Health check
+      tags:
+      - health

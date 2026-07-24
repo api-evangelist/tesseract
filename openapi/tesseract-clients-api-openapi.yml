@@ -1,0 +1,242 @@
+openapi: 3.0.0
+info:
+  title: Tesseract Public clients API
+  description: Client-facing API for vault data, strategies, and performance metrics.
+  version: 0.1.0
+  contact: {}
+servers: []
+tags:
+- name: clients
+paths:
+  /clients/{client}/summary:
+    get:
+      operationId: ClientsController_getClientSummary
+      parameters:
+      - name: client
+        required: true
+        in: path
+        description: Client wallet address
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientSummaryModel'
+      summary: Portfolio summary for a client (weighted avg APY)
+      tags:
+      - clients
+  /clients/{client}/vaults:
+    get:
+      operationId: ClientsController_getClientVaults
+      parameters:
+      - name: client
+        required: true
+        in: path
+        description: Client wallet address
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PublicVaultModel'
+      summary: List vaults for a client
+      tags:
+      - clients
+  /clients/{client}/transactions:
+    get:
+      operationId: ClientsController_getClientTransactions
+      parameters:
+      - name: client
+        required: true
+        in: path
+        description: Client wallet address
+        schema:
+          type: string
+      - name: types
+        required: false
+        in: query
+        description: Comma-separated types override
+        schema: {}
+      - name: type
+        required: false
+        in: query
+        schema: {}
+      - name: offset
+        required: false
+        in: query
+        schema: {}
+      - name: limit
+        required: false
+        in: query
+        schema: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VaultTransactionModel'
+      summary: List client-initiated transactions for a client
+      tags:
+      - clients
+components:
+  schemas:
+    ClientSummaryModel:
+      type: object
+      properties:
+        clientAddress:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        weightedAvgApy:
+          type: string
+          example: '5.234567'
+        vaultCount:
+          type: number
+          example: 3
+      required:
+      - clientAddress
+      - weightedAvgApy
+      - vaultCount
+    PublicVaultStrategy:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+        name:
+          type: string
+          example: Conservative USDC
+      required:
+      - id
+      - name
+    VaultEventModel:
+      type: object
+      properties:
+        eventName:
+          type: string
+          example: Deposit
+        args:
+          type: object
+          example:
+            account: 0x...
+            amount: '1000000'
+      required:
+      - eventName
+      - args
+    VaultTransactionModel:
+      type: object
+      properties:
+        hash:
+          type: string
+          example: 0xabc123...
+        vaultAddress:
+          type: string
+          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
+        type:
+          type: string
+          example: deposit
+          enum:
+          - deploy
+          - deposit
+          - withdraw
+          - execute
+          - withdraw_request
+          - release_funds
+          - target_closed
+        clientAddress:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        timestamp:
+          type: string
+          example: '1716000000'
+        from:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/VaultEventModel'
+      required:
+      - hash
+      - vaultAddress
+      - type
+      - clientAddress
+      - timestamp
+      - from
+      - events
+    PublicVaultModel:
+      type: object
+      properties:
+        address:
+          type: string
+          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
+        chainId:
+          type: number
+          example: 758624
+        clientAddress:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        deployerAddress:
+          type: string
+          example: '0xfC6C59AbA3F9D63A351C7Ea1ba0B48714BFdA2da'
+        asset:
+          type: string
+          example: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+        assetName:
+          type: string
+          example: USD Coin
+        assetSymbol:
+          type: string
+          example: USDC
+        assetDecimals:
+          type: number
+          example: 6
+        shareName:
+          type: string
+          example: Tesseract USDC Vault Share
+        shareSymbol:
+          type: string
+          example: teUSDC
+        shareDecimals:
+          type: number
+          example: 9
+        feeManager:
+          type: string
+          example: '0x0000000000000000000000000000000000000000'
+        withdrawManager:
+          type: string
+          example: '0x0000000000000000000000000000000000000000'
+        deployTimestamp:
+          type: string
+          example: '1716000000'
+        strategy:
+          nullable: true
+          type: object
+          allOf:
+          - $ref: '#/components/schemas/PublicVaultStrategy'
+      required:
+      - address
+      - chainId
+      - clientAddress
+      - deployerAddress
+      - asset
+      - assetName
+      - assetSymbol
+      - assetDecimals
+      - shareName
+      - shareSymbol
+      - shareDecimals
+      - feeManager
+      - withdrawManager
+      - deployTimestamp
+      - strategy

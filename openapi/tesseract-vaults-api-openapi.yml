@@ -1,0 +1,298 @@
+openapi: 3.0.0
+info:
+  title: Tesseract Public clients vaults API
+  description: Client-facing API for vault data, strategies, and performance metrics.
+  version: 0.1.0
+  contact: {}
+servers: []
+tags:
+- name: vaults
+paths:
+  /vaults/query/by-client-addresses:
+    post:
+      operationId: VaultsController_queryVaultsByAddresses
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchVaultsByAddressDto'
+      responses:
+        '200':
+          description: Vaults for the given addresses
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PublicVaultModel'
+      summary: List vaults for multiple client wallet addresses
+      tags:
+      - vaults
+  /vaults/{vault}:
+    get:
+      operationId: VaultsController_getVaultDetail
+      parameters:
+      - name: vault
+        required: true
+        in: path
+        description: Vault contract address
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicVaultModel'
+      summary: Get vault detail
+      tags:
+      - vaults
+  /vaults/{vault}/transactions:
+    get:
+      operationId: VaultsController_getVaultTransactions
+      parameters:
+      - name: vault
+        required: true
+        in: path
+        description: Vault contract address
+        schema:
+          type: string
+      - name: type
+        required: false
+        in: query
+        schema: {}
+      - name: offset
+        required: false
+        in: query
+        schema: {}
+      - name: limit
+        required: false
+        in: query
+        schema: {}
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VaultTransactionModel'
+      summary: List transactions for a vault
+      tags:
+      - vaults
+  /vaults/{vault}/strategy:
+    put:
+      operationId: VaultsController_setStrategy
+      parameters:
+      - name: vault
+        required: true
+        in: path
+        description: Vault contract address
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetStrategyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetStrategyResponseModel'
+      summary: Set vault strategy (EIP-712 signed)
+      tags:
+      - vaults
+components:
+  schemas:
+    PublicVaultStrategy:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+        name:
+          type: string
+          example: Conservative USDC
+      required:
+      - id
+      - name
+    BatchVaultsByAddressDto:
+      type: object
+      properties:
+        addresses:
+          description: Client wallet addresses (depositor addresses) to list vaults for.
+          minItems: 1
+          maxItems: 25
+          example:
+          - '0x0000000000000000000000000000000000000001'
+          type: array
+          items:
+            type: string
+      required:
+      - addresses
+    SetStrategyResponseModel:
+      type: object
+      properties:
+        address:
+          type: string
+          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
+        strategyId:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+        updatedBy:
+          type: string
+          example: public-api
+      required:
+      - address
+      - strategyId
+      - updatedBy
+    VaultEventModel:
+      type: object
+      properties:
+        eventName:
+          type: string
+          example: Deposit
+        args:
+          type: object
+          example:
+            account: 0x...
+            amount: '1000000'
+      required:
+      - eventName
+      - args
+    SetStrategyDto:
+      type: object
+      properties:
+        clientAddress:
+          type: string
+          example: 0x1234...abcd
+          description: Client wallet address (signer)
+        strategyId:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+        signature:
+          type: string
+          example: 0xabcdef...
+        timestamp:
+          type: number
+          example: 1716000000
+      required:
+      - clientAddress
+      - strategyId
+      - signature
+      - timestamp
+    VaultTransactionModel:
+      type: object
+      properties:
+        hash:
+          type: string
+          example: 0xabc123...
+        vaultAddress:
+          type: string
+          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
+        type:
+          type: string
+          example: deposit
+          enum:
+          - deploy
+          - deposit
+          - withdraw
+          - execute
+          - withdraw_request
+          - release_funds
+          - target_closed
+        clientAddress:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        timestamp:
+          type: string
+          example: '1716000000'
+        from:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/VaultEventModel'
+      required:
+      - hash
+      - vaultAddress
+      - type
+      - clientAddress
+      - timestamp
+      - from
+      - events
+    PublicVaultModel:
+      type: object
+      properties:
+        address:
+          type: string
+          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
+        chainId:
+          type: number
+          example: 758624
+        clientAddress:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        deployerAddress:
+          type: string
+          example: '0xfC6C59AbA3F9D63A351C7Ea1ba0B48714BFdA2da'
+        asset:
+          type: string
+          example: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+        assetName:
+          type: string
+          example: USD Coin
+        assetSymbol:
+          type: string
+          example: USDC
+        assetDecimals:
+          type: number
+          example: 6
+        shareName:
+          type: string
+          example: Tesseract USDC Vault Share
+        shareSymbol:
+          type: string
+          example: teUSDC
+        shareDecimals:
+          type: number
+          example: 9
+        feeManager:
+          type: string
+          example: '0x0000000000000000000000000000000000000000'
+        withdrawManager:
+          type: string
+          example: '0x0000000000000000000000000000000000000000'
+        deployTimestamp:
+          type: string
+          example: '1716000000'
+        strategy:
+          nullable: true
+          type: object
+          allOf:
+          - $ref: '#/components/schemas/PublicVaultStrategy'
+      required:
+      - address
+      - chainId
+      - clientAddress
+      - deployerAddress
+      - asset
+      - assetName
+      - assetSymbol
+      - assetDecimals
+      - shareName
+      - shareSymbol
+      - shareDecimals
+      - feeManager
+      - withdrawManager
+      - deployTimestamp
+      - strategy
