@@ -1,0 +1,72 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/tesseract-public-api-openapi.json
+docs: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md
+entities:
+  - name: Client
+    id: clientAddress
+    id_format: ethereum-address (0x-prefixed 20-byte hex)
+    description: A client (depositor) wallet address that owns one or more vaults.
+    schema: ClientSummaryModel
+  - name: Vault
+    id: address
+    id_format: ethereum-address
+    description: >-
+      A per-client on-chain vault contract on Ethereum mainnet holding a single
+      ERC-20 asset and issuing non-transferable share tokens. No pooling across
+      clients.
+    schema: PublicVaultModel
+  - name: Strategy
+    id: id
+    id_format: uuid
+    description: A yield strategy that can be assigned to a vault (e.g. Conservative USDC).
+    schema: StrategyModel
+  - name: VaultTransaction
+    id: hash
+    id_format: ethereum-tx-hash
+    description: A vault event (deploy, deposit, withdraw, execute, withdraw_request, release_funds, target_closed).
+    schema: VaultTransactionModel
+  - name: Allocation
+    description: Point-in-time / historical allocation breakdown for a vault.
+    schema: [AllocationHistoryModel, AllocationLatestModel]
+  - name: Performance
+    description: APY/APR, TVL and share-price time-series for a vault.
+    schema: [PerformanceHistoryModel, TvlHistoryModel, SummaryModel]
+relationships:
+  - from: Client
+    to: Vault
+    type: has_many
+    via: clientAddress
+  - from: Vault
+    to: Client
+    type: belongs_to
+    via: clientAddress
+  - from: Vault
+    to: Strategy
+    type: has_one
+    via: strategy.id
+  - from: Vault
+    to: VaultTransaction
+    type: has_many
+    via: vaultAddress
+  - from: VaultTransaction
+    to: Vault
+    type: belongs_to
+    via: vaultAddress
+  - from: Vault
+    to: Allocation
+    type: has_many
+    via: vaultAddress
+  - from: Vault
+    to: Performance
+    type: has_many
+    via: vaultAddress
+earn_api_model:
+  note: >-
+    The partner Earn API (separate surface) uses a User -> Account -> Transaction
+    hierarchy. A partner reference DBML schema (delivered under NDA) includes
+    tesseract_product_types, tesseract_products, partner_users, tesseract_users
+    (two Tesseract user IDs per partner user, one per credential set),
+    tesseract_user_accounts (per-product/per-currency), tesseract_user_account_transactions,
+    tesseract_wallets, and tesseract_reports_processed.
+  source: https://docs.tesseract.fi/earn-direct-and-earn-api/earn-api/data-model-mapping.md

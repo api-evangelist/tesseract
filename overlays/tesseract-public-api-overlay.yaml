@@ -1,0 +1,23 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Tesseract Public API
+  version: 1.0.0
+extends: openapi/tesseract-public-api-openapi.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: tesseract
+      x-apievangelist-surface: vault-reporting
+      x-apievangelist-note: >-
+        Reporting and vault-state surface for the Tesseract Dedicated Client
+        Vaults product (Ethereum mainnet). Read endpoints are unauthenticated;
+        strategy assignment is EIP-712 signed by the vault owner.
+  - target: $.servers
+    update:
+      - url: https://api.vault.tesseract.fi
+        description: Tesseract Public API (production)
+  - target: $.info
+    update:
+      x-authentication: authentication/tesseract-authentication.yml
+      x-conventions: conventions/tesseract-conventions.yml
+      x-data-model: data-model/tesseract-data-model.yml

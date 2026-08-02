@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md
+versioning:
+  scheme: uri-base-url
+  current: v0.1.0
+  base_url: https://api.vault.tesseract.fi
+  description: >-
+    The Public API is versioned via its base URL. Backwards-compatible additions
+    are rolled out without notice; clients should favour lenient parsing.
+deprecation:
+  policy_url: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md
+  description: >-
+    Breaking changes are announced in the changelog referenced from the Public
+    API reference; backwards-compatible additions ship without notice.
+  sunset_header: false
+changelog:
+  url: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md
+  note: A changelog is referenced from the Public API reference page.
+sla:
+  monitoring: 24/7 automated monitoring of positions with auto-deleveraging when risk thresholds are breached.
+  emergency_controls: >-
+    Under the Vault Services Agreement, Tesseract Investment Oy may invoke an
+    emergency freeze on vault operations in defined incident scenarios.
+  source: https://docs.tesseract.fi/tesseract/security-and-compliance.md
+status_page: null
+deprecated_operations: []

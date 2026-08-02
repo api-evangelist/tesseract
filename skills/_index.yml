@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/tesseract-public-api-openapi.json
+skills:
+  - file: tesseract-read-vault-portfolio.md
+    name: Read a client's vault portfolio and performance
+    api: openapi/tesseract-public-api-openapi.json
+    operations:
+      - ClientsController_getClientVaults
+      - ClientsController_getClientSummary
+      - VaultsController_getVaultDetail
+      - InsightsController_getSummary
+      - InsightsController_getPerformance
+      - InsightsController_getAllocationsLatest
+      - VaultsController_getVaultTransactions
+  - file: tesseract-assign-vault-strategy.md
+    name: Assign a yield strategy to a vault (EIP-712 signed)
+    api: openapi/tesseract-public-api-openapi.json
+    operations:
+      - StrategiesController_getStrategies
+      - StrategiesController_getStrategy
+      - VaultsController_setStrategy
+      - VaultsController_getVaultDetail

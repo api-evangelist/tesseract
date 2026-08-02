@@ -1,0 +1,65 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.tesseract.fi/
+authentication:
+  style: >-
+    Public vault API: no auth for reads (vault address is the key), EIP-712
+    signature for strategy assignment. Earn API: OAuth2 client-credentials (M2M)
+    bearer tokens.
+  see: authentication/tesseract-authentication.yml
+idempotency:
+  supported: true
+  mechanism: report-ingestion
+  description: >-
+    The Earn API daily settlement/report flow is designed for idempotent
+    ingestion: partners track a `tesseract_reports_processed` table so a given
+    daily report is applied exactly once during reconciliation. Deposits and
+    withdrawals are netted per accounting cycle rather than replayed, making
+    repeated report reads safe.
+  source: https://docs.tesseract.fi/earn-direct-and-earn-api/earn-api/data-model-mapping.md
+pagination:
+  style: offset-limit
+  params: [offset, limit]
+  applies_to:
+    - GET /clients/{client}/transactions
+    - GET /vaults/{vault}/transactions
+  filtering:
+    - param: type
+      description: Filter transactions by type (deploy, deposit, withdraw, execute, withdraw_request, release_funds, target_closed)
+    - param: types
+      description: Comma-separated types override (client transactions)
+  date_range:
+    params: [from, to]
+    format: ISO 8601
+    default: from defaults to 30 days ago
+    applies_to:
+      - GET /insights/{vaultAddress}/allocations
+      - GET /insights/{vaultAddress}/performance
+      - GET /insights/{vaultAddress}/tvl
+  source: openapi/tesseract-public-api-openapi.json
+versioning:
+  scheme: uri-base-url
+  description: >-
+    The Public API is versioned via its base URL (https://api.vault.tesseract.fi).
+    Breaking changes are announced in the changelog; backwards-compatible
+    additions are rolled out without notice — clients should favour lenient
+    parsing of response bodies.
+  source: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md
+error_envelope:
+  format: http-status
+  description: >-
+    The Public API returns standard HTTP status codes with JSON bodies. Numeric
+    and monetary amounts are returned as strings to preserve precision; parse
+    leniently and treat unknown fields as additive.
+settlement_model:
+  description: >-
+    Earn API deposits/withdrawals are booked into Tesseract's accounting system
+    without on-chain transfers; balances are netted per accounting cycle into a
+    per-currency outstanding balance and settled (typically daily) above a
+    minimum settlement threshold (typically ~1,000 USD equivalent per currency).
+  source: https://docs.tesseract.fi/earn-direct-and-earn-api/earn-api/settlements.md
+cross_reference:
+  authentication: authentication/tesseract-authentication.yml
+  errors: errors/tesseract-problem-types.yml
+  lifecycle: lifecycle/tesseract-lifecycle.yml
+  sandbox: sandbox/tesseract-sandbox.yml

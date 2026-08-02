@@ -1,0 +1,52 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.tesseract.fi/earn-direct-and-earn-api/earn-api/overview.md
+docs: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md
+summary:
+  types: [none, signature, oauth2]
+  api_key_in: []
+  oauth2_flows: [clientCredentials]
+  notes: >-
+    Tesseract exposes two distinct API surfaces with different auth models. The
+    public vault reporting API (api.vault.tesseract.fi) requires no credentials
+    for read endpoints — the vault contract address itself acts as the key —
+    while the single write endpoint (strategy assignment) is authorized by an
+    EIP-712 signature validated against the vault owner. The partner-facing Earn
+    API uses OAuth2 client-credentials (machine-to-machine).
+schemes:
+  - name: PublicRead
+    type: none
+    scope: read
+    description: >-
+      Read endpoints on the Tesseract Public API require no authentication. The
+      vault contract address (and client wallet address) function as the access
+      key; there is no bearer token or API key for GET operations.
+    applies_to:
+      - openapi/tesseract-public-api-openapi.json
+    sources: [https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md]
+  - name: EIP712Signature
+    type: signature
+    scheme: eip-712
+    description: >-
+      The PUT /vaults/{vault}/strategy operation is authorized off-chain by an
+      EIP-712 typed-data signature (SetStrategy: vaultAddress, strategyId,
+      timestamp) signed by the vault owner. No on-chain transaction or gas is
+      required; signatures expire after a short window (send within minutes of
+      signing).
+    domain:
+      name: Tesseract Public API
+      version: '1'
+      chainId: 1
+    applies_to:
+      - openapi/tesseract-public-api-openapi.json#VaultsController_setStrategy
+    sources: [https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md]
+  - name: EarnApiOAuth2
+    type: oauth2
+    flow: clientCredentials
+    description: >-
+      Partner integrations to the Earn API authenticate with OAuth2
+      client-credentials (M2M). Partners are issued a Client ID and Client Secret
+      which are exchanged for bearer tokens. Credentials are delivered per
+      environment (Development / Test / Production) via Bitwarden Send.
+    applies_to: [earn-api]
+    sources: [https://docs.tesseract.fi/earn-direct-and-earn-api/earn-api/overview.md]

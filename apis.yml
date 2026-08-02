@@ -1,8 +1,29 @@
 aid: tesseract
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tesseract.png
 name: Tesseract
-description: 'Tesseract is a company surfaced as a portfolio company of sapphire-ventures and added to
-  the API Evangelist network as a stub for enrichment. Sector: fintech. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Tesseract is a Finnish digital-asset management and crypto-lending company.
+  Tesseract Investment Oy is authorised as a Crypto-Asset Service Provider (CASP)
+  under Regulation (EU) 2023/1114 (MiCA) and supervised by the Finnish Financial
+  Supervisory Authority (FIN-FSA). It operates institutional-grade, per-client
+  on-chain Dedicated Client Vaults (DCVs) on Ethereum mainnet, an Earn API that
+  lets exchanges, neobanks and fintechs offer crypto yield to their users under
+  their own brand, and Earn Direct for referred clients. Developers integrate via
+  a public vault reporting API (unauthenticated reads, EIP-712 signed strategy
+  assignment) and a partner Earn API using OAuth2 client-credentials with a daily
+  net-settlement model.
 url: https://raw.githubusercontent.com/api-evangelist/tesseract/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,16 +33,140 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Fintech
-apis: []
+- Cryptocurrency
+- DeFi
+- Lending
+- Yield
+- Digital Assets
+- Ethereum
+- MiCA
+- Vaults
+- Institutional
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: tesseract:tesseract-clients-api
+  name: Tesseract clients API
+  description: The clients API from Tesseract — 3 operation(s) for clients.
+  humanURL: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md
+  baseURL: https://api.vault.tesseract.fi
+  tags:
+  - clients
+  properties:
+  - type: OpenAPI
+    url: openapi/tesseract-clients-api-openapi.yml
+  - type: InteractiveDocumentation
+    url: https://api.vault.tesseract.fi/public/docs
+- aid: tesseract:tesseract-health-api
+  name: Tesseract health API
+  description: The health API from Tesseract — 1 operation(s) for health.
+  humanURL: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md
+  baseURL: https://api.vault.tesseract.fi
+  tags:
+  - health
+  properties:
+  - type: OpenAPI
+    url: openapi/tesseract-health-api-openapi.yml
+  - type: InteractiveDocumentation
+    url: https://api.vault.tesseract.fi/public/docs
+- aid: tesseract:tesseract-insights-api
+  name: Tesseract insights API
+  description: The insights API from Tesseract — 5 operation(s) for insights.
+  humanURL: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md
+  baseURL: https://api.vault.tesseract.fi
+  tags:
+  - insights
+  properties:
+  - type: OpenAPI
+    url: openapi/tesseract-insights-api-openapi.yml
+  - type: InteractiveDocumentation
+    url: https://api.vault.tesseract.fi/public/docs
+- aid: tesseract:tesseract-strategies-api
+  name: Tesseract strategies API
+  description: The strategies API from Tesseract — 2 operation(s) for strategies.
+  humanURL: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md
+  baseURL: https://api.vault.tesseract.fi
+  tags:
+  - strategies
+  properties:
+  - type: OpenAPI
+    url: openapi/tesseract-strategies-api-openapi.yml
+  - type: InteractiveDocumentation
+    url: https://api.vault.tesseract.fi/public/docs
+- aid: tesseract:tesseract-vaults-api
+  name: Tesseract vaults API
+  description: The vaults API from Tesseract — 4 operation(s) for vaults.
+  humanURL: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md
+  baseURL: https://api.vault.tesseract.fi
+  tags:
+  - vaults
+  properties:
+  - type: OpenAPI
+    url: openapi/tesseract-vaults-api-openapi.yml
+  - type: InteractiveDocumentation
+    url: https://api.vault.tesseract.fi/public/docs
 common:
+- type: DomainSecurity
+  url: security/tesseract-domain-security.yml
 - type: Website
-  url: https://tesseractinvestment.com/
+  url: https://tesseract.fi/
+- type: DeveloperPortal
+  url: https://docs.tesseract.fi/
+- type: Documentation
+  url: https://docs.tesseract.fi/
+- type: APIReference
+  url: https://api.vault.tesseract.fi/public/docs
+- type: GettingStarted
+  url: https://docs.tesseract.fi/dedicated-client-vaults/integration-guide.md
+- type: Authentication
+  url: authentication/tesseract-authentication.yml
+- type: Conventions
+  url: conventions/tesseract-conventions.yml
+- type: Idempotency
+  url: conventions/tesseract-conventions.yml
+- type: ErrorCatalog
+  url: errors/tesseract-problem-types.yml
+- type: DataModel
+  url: data-model/tesseract-data-model.yml
+- type: Conformance
+  url: conformance/tesseract-conformance.yml
+- type: Compliance
+  url: https://docs.tesseract.fi/tesseract/security-and-compliance.md
+- type: Lifecycle
+  url: lifecycle/tesseract-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/tesseract-lifecycle.yml
+- type: MCPServer
+  url: mcp/tesseract-mcp.yml
+- type: LLMsTxt
+  url: llms/tesseract-llms.txt
+- type: Sandbox
+  url: sandbox/tesseract-sandbox.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  url: overlays/tesseract-public-api-overlay.yaml
+- type: Login
+  url: https://app.tesseract.fi
+- type: Support
+  url: https://tesseract.fi/contact/
+- type: Blog
+  url: https://tesseract.fi/news/
+- type: Pricing
+  url: https://docs.tesseract.fi/dedicated-client-vaults/fees-and-commercial-model.md
+- type: TermsOfService
+  url: https://tesseract.fi/terms/
+- type: PrivacyPolicy
+  url: https://tesseract.fi/privacy-notice/
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v1

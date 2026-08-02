@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.tesseract.fi/tesseract/security-and-compliance.md
+standards:
+  - id: mica-casp
+    conforms: true
+    evidence: >-
+      Tesseract Investment Oy is authorised as a Crypto-Asset Service Provider
+      (CASP) under Regulation (EU) 2023/1114 (MiCA) and supervised by the Finnish
+      Financial Supervisory Authority (FIN-FSA). Covers custody, portfolio
+      management, transfer services, investment advice, and reception/transmission
+      of orders.
+  - id: iso-27001-2022
+    conforms: true
+    evidence: >-
+      ISO/IEC 27001:2022 (Tesseract Earn Oy), valid to October 2027, audited by
+      Prescient Security. Reports available on request under NDA.
+  - id: soc2-type-ii
+    conforms: true
+    evidence: >-
+      SOC 2 Type II (Tesseract Earn Oy), three consecutive years, audited by
+      Prescient Security. Reports available on request under NDA.
+  - id: travel-rule-eu-2023-1113
+    conforms: true
+    evidence: >-
+      Implements Travel Rule obligations under Regulation (EU) 2023/1113 via
+      Sumsub; AML/KYC via Sumsub with TRM for transaction monitoring.
+  - id: eip-712
+    conforms: true
+    evidence: >-
+      Strategy-assignment endpoint accepts EIP-712 typed-data signatures
+      (SetStrategy domain, chainId 1) validated against the vault owner.
+  - id: oauth2-client-credentials
+    conforms: true
+    evidence: Earn API partner integrations use OAuth2 client-credentials (M2M).
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: No application/problem+json responses declared in the OpenAPI.
+  - id: openapi-3
+    conforms: true
+    evidence: Public API publishes an OpenAPI 3.0.0 document at api.vault.tesseract.fi/public/docs-json.
+compliance_program:
+  published: true
+  certifications: [MiCA CASP, ISO/IEC 27001:2022, SOC 2 Type II]
+  page: https://docs.tesseract.fi/tesseract/security-and-compliance.md
+  note: Certificates and audit reports available on request under NDA.

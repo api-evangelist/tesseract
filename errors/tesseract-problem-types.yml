@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: derived
+format: http-status
+source: openapi/tesseract-public-api-openapi.json
+note: >-
+  The Tesseract Public API OpenAPI declares only 200 responses; it does not
+  publish a machine-readable error schema (no application/problem+json). The
+  entries below are DERIVED from documented behaviour and standard HTTP
+  semantics for the operations, not from a published error registry. Amounts are
+  returned as strings; parse response bodies leniently.
+problems:
+  - status: 404
+    title: Resource not found
+    detail: Vault, client, or strategy address/ID does not exist or has no data.
+    source_operation: openapi/tesseract-public-api-openapi.json#VaultsController_getVaultDetail
+  - status: 400
+    title: Invalid EIP-712 signature or expired timestamp
+    detail: >-
+      Strategy-assignment signature failed validation against the vault owner, or
+      the signed timestamp is outside the acceptance window (signatures expire a
+      few minutes after signing). Re-sign and resubmit.
+    source_operation: openapi/tesseract-public-api-openapi.json#VaultsController_setStrategy
+    source_docs: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md
+  - status: 409
+    title: Strategy change rejected
+    detail: >-
+      Strategy changes may be restricted once a vault is actively managed; a
+      rejected submission requires contacting Tesseract to arrange a managed
+      transition.
+    source_operation: openapi/tesseract-public-api-openapi.json#VaultsController_setStrategy
+    source_docs: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md

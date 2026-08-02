@@ -1,0 +1,22 @@
+{
+  "provider": "tesseract",
+  "sources": [
+    "tesseract-clients-api-openapi.yml",
+    "tesseract-health-api-openapi.yml",
+    "tesseract-insights-api-openapi.yml",
+    "tesseract-strategies-api-openapi.yml",
+    "tesseract-vaults-api-openapi.yml"
+  ],
+  "outputs": [
+    "tesseract-clients-api-openapi.yml",
+    "tesseract-health-api-openapi.yml",
+    "tesseract-insights-api-openapi.yml",
+    "tesseract-strategies-api-openapi.yml",
+    "tesseract-vaults-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

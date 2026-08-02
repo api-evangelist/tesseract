@@ -1,0 +1,52 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.tesseract.fi/earn-direct-and-earn-api/earn-api/process-and-environments.md
+surface: earn-api
+environments:
+  - name: Development
+    url: https://earn-api-dev.partner.env.tesseractinvestment.dev/
+    description: >-
+      Environment to develop against. All APIs are available but Tesseract does
+      not settle its side of the outstanding balance. Development credentials may
+      be used from developer workstations.
+    swagger: https://earn-api-dev.partner.env.tesseractinvestment.dev/docs/
+  - name: Test
+    url: https://earn-api-test.partner.env.tesseractinvestment.dev/
+    description: >-
+      Copy of production where the partner can develop and test daily settlement
+      with small amounts of real crypto (no testnet support). Product list is a
+      subset of production. Test/Production credentials should only be used in
+      cloud-based systems.
+  - name: Production
+    url: https://earn-api.tesseractinvestment.com/
+    description: Live partner integration.
+credentials:
+  delivery: Bitwarden Send
+  note: >-
+    Authentication credentials (OAuth2 client-credentials) are delivered per
+    environment via Bitwarden Send; recipients store them in a password manager.
+    Development credentials for workstations; Test/Production for cloud systems
+    only.
+  prerequisites:
+    test: Mutual NDA signed.
+    production: Alliance Agreement signed; acceptance test passed.
+test_values:
+  note: >-
+    Tesseract does not publish static magic test card numbers or fixture tokens.
+    Test/Production environments settle with small amounts of REAL crypto (no
+    testnet). Both parties exchange per-currency settlement wallet addresses out
+    of band before Test/Production use.
+public_vault_api:
+  note: >-
+    The public vault reporting API (api.vault.tesseract.fi) read endpoints are
+    unauthenticated and can be exercised directly against live vault addresses
+    via the Swagger UI.
+  swagger: https://api.vault.tesseract.fi/public/docs
+acceptance_testing:
+  performed_in: Production
+  tests:
+    - id: TC_1
+      name: User Journey Test (account creation, product access, deposit, balances, transactions, withdraw)
+    - id: TC_2
+      name: Settlement Test (deposit across products, Day-1 reports, withdraw, Day-2 reports)
+  source: https://docs.tesseract.fi/earn-direct-and-earn-api/earn-api/acceptance-testing.md
