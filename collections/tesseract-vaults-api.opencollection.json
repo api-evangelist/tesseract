@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tesseract Public clients vaults API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "vaults",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List vaults for multiple client wallet addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/vaults/query/by-client-addresses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List vaults for multiple client wallet addresses"
+        },
+        {
+          "info": {
+            "name": "Get vault detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/vaults/:vault",
+            "params": [
+              {
+                "name": "vault",
+                "value": "",
+                "type": "path",
+                "description": "Vault contract address"
+              }
+            ]
+          },
+          "docs": "Get vault detail"
+        },
+        {
+          "info": {
+            "name": "List transactions for a vault",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/vaults/:vault/transactions",
+            "params": [
+              {
+                "name": "vault",
+                "value": "",
+                "type": "path",
+                "description": "Vault contract address"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List transactions for a vault"
+        },
+        {
+          "info": {
+            "name": "Set vault strategy (EIP-712 signed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/vaults/:vault/strategy",
+            "params": [
+              {
+                "name": "vault",
+                "value": "",
+                "type": "path",
+                "description": "Vault contract address"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set vault strategy (EIP-712 signed)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

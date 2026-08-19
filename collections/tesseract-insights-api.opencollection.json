@@ -1,0 +1,149 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tesseract Public clients insights API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "insights",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Allocation history for stacked area chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/insights/:vaultAddress/allocations",
+            "params": [
+              {
+                "name": "vaultAddress",
+                "value": "",
+                "type": "path",
+                "description": "Vault contract address"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 start date (defaults to 30 days ago)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 end date"
+              }
+            ]
+          },
+          "docs": "Allocation history for stacked area chart"
+        },
+        {
+          "info": {
+            "name": "Current allocation breakdown for pie/donut chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/insights/:vaultAddress/allocations/latest",
+            "params": [
+              {
+                "name": "vaultAddress",
+                "value": "",
+                "type": "path",
+                "description": "Vault contract address"
+              }
+            ]
+          },
+          "docs": "Current allocation breakdown for pie/donut chart"
+        },
+        {
+          "info": {
+            "name": "APY/APR history for line chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/insights/:vaultAddress/performance",
+            "params": [
+              {
+                "name": "vaultAddress",
+                "value": "",
+                "type": "path",
+                "description": "Vault contract address"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 start date (defaults to 30 days ago)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 end date"
+              }
+            ]
+          },
+          "docs": "APY/APR history for line chart"
+        },
+        {
+          "info": {
+            "name": "TVL and share price history for area chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/insights/:vaultAddress/tvl",
+            "params": [
+              {
+                "name": "vaultAddress",
+                "value": "",
+                "type": "path",
+                "description": "Vault contract address"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 start date (defaults to 30 days ago)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 end date"
+              }
+            ]
+          },
+          "docs": "TVL and share price history for area chart"
+        },
+        {
+          "info": {
+            "name": "Dashboard summary with KPIs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/insights/:vaultAddress/summary",
+            "params": [
+              {
+                "name": "vaultAddress",
+                "value": "",
+                "type": "path",
+                "description": "Vault contract address"
+              }
+            ]
+          },
+          "docs": "Dashboard summary with KPIs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

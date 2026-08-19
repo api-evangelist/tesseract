@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tesseract Public clients strategies API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "strategies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all strategies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/strategies"
+          },
+          "docs": "List all strategies"
+        },
+        {
+          "info": {
+            "name": "Get strategy by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/strategies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Strategy UUID"
+              }
+            ]
+          },
+          "docs": "Get strategy by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

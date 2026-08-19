@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tesseract Public clients API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "clients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Portfolio summary for a client (weighted avg APY)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/clients/:client/summary",
+            "params": [
+              {
+                "name": "client",
+                "value": "",
+                "type": "path",
+                "description": "Client wallet address"
+              }
+            ]
+          },
+          "docs": "Portfolio summary for a client (weighted avg APY)"
+        },
+        {
+          "info": {
+            "name": "List vaults for a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/clients/:client/vaults",
+            "params": [
+              {
+                "name": "client",
+                "value": "",
+                "type": "path",
+                "description": "Client wallet address"
+              }
+            ]
+          },
+          "docs": "List vaults for a client"
+        },
+        {
+          "info": {
+            "name": "List client-initiated transactions for a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/clients/:client/transactions",
+            "params": [
+              {
+                "name": "client",
+                "value": "",
+                "type": "path",
+                "description": "Client wallet address"
+              },
+              {
+                "name": "types",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated types override"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List client-initiated transactions for a client"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

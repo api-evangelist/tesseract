@@ -1,0 +1,290 @@
+{
+  "item": [
+    {
+      "id": "945ed98a-5581-40d9-9c07-ddec5e7cff92",
+      "name": "clients",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e57f6a9c-288d-4119-abbd-0252b773e072",
+          "name": "Portfolio summary for a client (weighted avg APY)",
+          "request": {
+            "name": "Portfolio summary for a client (weighted avg APY)",
+            "description": {},
+            "url": {
+              "path": [
+                "clients",
+                ":client",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "client",
+                  "description": "(Required) Client wallet address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bcb1f45f-804d-47bb-9289-d7fdb844b5c6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":client",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "client",
+                      "description": "(Required) Client wallet address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"clientAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n  \"weightedAvgApy\": \"5.234567\",\n  \"vaultCount\": 3\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0dc3be4b-63c0-47b9-a7bd-a1651df21489",
+          "name": "List vaults for a client",
+          "request": {
+            "name": "List vaults for a client",
+            "description": {},
+            "url": {
+              "path": [
+                "clients",
+                ":client",
+                "vaults"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "client",
+                  "description": "(Required) Client wallet address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce98e857-9ede-45b2-a093-253f9293bae0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":client",
+                    "vaults"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "client",
+                      "description": "(Required) Client wallet address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"address\": \"0x5ddd313916c0662fae20b33e54836f03866252ec\",\n    \"chainId\": 758624,\n    \"clientAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n    \"deployerAddress\": \"0xfC6C59AbA3F9D63A351C7Ea1ba0B48714BFdA2da\",\n    \"asset\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n    \"assetName\": \"USD Coin\",\n    \"assetSymbol\": \"USDC\",\n    \"assetDecimals\": 6,\n    \"shareName\": \"Tesseract USDC Vault Share\",\n    \"shareSymbol\": \"teUSDC\",\n    \"shareDecimals\": 9,\n    \"feeManager\": \"0x0000000000000000000000000000000000000000\",\n    \"withdrawManager\": \"0x0000000000000000000000000000000000000000\",\n    \"deployTimestamp\": \"1716000000\",\n    \"strategy\": {\n      \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n      \"name\": \"Conservative USDC\"\n    }\n  },\n  {\n    \"address\": \"0x5ddd313916c0662fae20b33e54836f03866252ec\",\n    \"chainId\": 758624,\n    \"clientAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n    \"deployerAddress\": \"0xfC6C59AbA3F9D63A351C7Ea1ba0B48714BFdA2da\",\n    \"asset\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n    \"assetName\": \"USD Coin\",\n    \"assetSymbol\": \"USDC\",\n    \"assetDecimals\": 6,\n    \"shareName\": \"Tesseract USDC Vault Share\",\n    \"shareSymbol\": \"teUSDC\",\n    \"shareDecimals\": 9,\n    \"feeManager\": \"0x0000000000000000000000000000000000000000\",\n    \"withdrawManager\": \"0x0000000000000000000000000000000000000000\",\n    \"deployTimestamp\": \"1716000000\",\n    \"strategy\": {\n      \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n      \"name\": \"Conservative USDC\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba09c7ce-78a7-4fd2-9753-9bbe077b227f",
+          "name": "List client-initiated transactions for a client",
+          "request": {
+            "name": "List client-initiated transactions for a client",
+            "description": {},
+            "url": {
+              "path": [
+                "clients",
+                ":client",
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "client",
+                  "description": "(Required) Client wallet address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8b4e491-395c-4341-a5ea-b2b3d8257b1e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clients",
+                    ":client",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "client",
+                      "description": "(Required) Client wallet address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"hash\": \"0xabc123...\",\n    \"vaultAddress\": \"0x5ddd313916c0662fae20b33e54836f03866252ec\",\n    \"type\": \"deposit\",\n    \"clientAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n    \"timestamp\": \"1716000000\",\n    \"from\": \"0x1234567890abcdef1234567890abcdef12345678\",\n    \"events\": [\n      {\n        \"eventName\": \"Deposit\",\n        \"args\": {\n          \"account\": \"0x...\",\n          \"amount\": \"1000000\"\n        }\n      },\n      {\n        \"eventName\": \"Deposit\",\n        \"args\": {\n          \"account\": \"0x...\",\n          \"amount\": \"1000000\"\n        }\n      }\n    ]\n  },\n  {\n    \"hash\": \"0xabc123...\",\n    \"vaultAddress\": \"0x5ddd313916c0662fae20b33e54836f03866252ec\",\n    \"type\": \"deposit\",\n    \"clientAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n    \"timestamp\": \"1716000000\",\n    \"from\": \"0x1234567890abcdef1234567890abcdef12345678\",\n    \"events\": [\n      {\n        \"eventName\": \"Deposit\",\n        \"args\": {\n          \"account\": \"0x...\",\n          \"amount\": \"1000000\"\n        }\n      },\n      {\n        \"eventName\": \"Deposit\",\n        \"args\": {\n          \"account\": \"0x...\",\n          \"amount\": \"1000000\"\n        }\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4e331ea3-0e59-472e-bc05-b87bb1dd9a9e",
+    "name": "Tesseract Public clients API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Client-facing API for vault data, strategies, and performance metrics.",
+      "type": "text/plain"
+    }
+  }
+}

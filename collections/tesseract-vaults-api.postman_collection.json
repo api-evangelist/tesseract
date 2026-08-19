@@ -1,0 +1,401 @@
+{
+  "item": [
+    {
+      "id": "0b16c618-46a8-43b1-a214-5e1f0d1e72e8",
+      "name": "vaults",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8122a8bf-099a-4621-9b14-f6f1bd559772",
+          "name": "List vaults for multiple client wallet addresses",
+          "request": {
+            "name": "List vaults for multiple client wallet addresses",
+            "description": {},
+            "url": {
+              "path": [
+                "vaults",
+                "query",
+                "by-client-addresses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"addresses\": [\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d0f41d6-0be9-4793-92e9-a7e93b71387b",
+              "name": "Vaults for the given addresses",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vaults",
+                    "query",
+                    "by-client-addresses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addresses\": [\n    \"0x0000000000000000000000000000000000000001\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"address\": \"0x5ddd313916c0662fae20b33e54836f03866252ec\",\n    \"chainId\": 758624,\n    \"clientAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n    \"deployerAddress\": \"0xfC6C59AbA3F9D63A351C7Ea1ba0B48714BFdA2da\",\n    \"asset\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n    \"assetName\": \"USD Coin\",\n    \"assetSymbol\": \"USDC\",\n    \"assetDecimals\": 6,\n    \"shareName\": \"Tesseract USDC Vault Share\",\n    \"shareSymbol\": \"teUSDC\",\n    \"shareDecimals\": 9,\n    \"feeManager\": \"0x0000000000000000000000000000000000000000\",\n    \"withdrawManager\": \"0x0000000000000000000000000000000000000000\",\n    \"deployTimestamp\": \"1716000000\",\n    \"strategy\": {\n      \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n      \"name\": \"Conservative USDC\"\n    }\n  },\n  {\n    \"address\": \"0x5ddd313916c0662fae20b33e54836f03866252ec\",\n    \"chainId\": 758624,\n    \"clientAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n    \"deployerAddress\": \"0xfC6C59AbA3F9D63A351C7Ea1ba0B48714BFdA2da\",\n    \"asset\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n    \"assetName\": \"USD Coin\",\n    \"assetSymbol\": \"USDC\",\n    \"assetDecimals\": 6,\n    \"shareName\": \"Tesseract USDC Vault Share\",\n    \"shareSymbol\": \"teUSDC\",\n    \"shareDecimals\": 9,\n    \"feeManager\": \"0x0000000000000000000000000000000000000000\",\n    \"withdrawManager\": \"0x0000000000000000000000000000000000000000\",\n    \"deployTimestamp\": \"1716000000\",\n    \"strategy\": {\n      \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n      \"name\": \"Conservative USDC\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "002fb0ad-259d-415b-bb4f-07733843a0f7",
+          "name": "Get vault detail",
+          "request": {
+            "name": "Get vault detail",
+            "description": {},
+            "url": {
+              "path": [
+                "vaults",
+                ":vault"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vault",
+                  "description": "(Required) Vault contract address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ea5e520-bf06-4ce8-8361-909438063ed4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vaults",
+                    ":vault"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vault",
+                      "description": "(Required) Vault contract address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address\": \"0x5ddd313916c0662fae20b33e54836f03866252ec\",\n  \"chainId\": 758624,\n  \"clientAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n  \"deployerAddress\": \"0xfC6C59AbA3F9D63A351C7Ea1ba0B48714BFdA2da\",\n  \"asset\": \"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\n  \"assetName\": \"USD Coin\",\n  \"assetSymbol\": \"USDC\",\n  \"assetDecimals\": 6,\n  \"shareName\": \"Tesseract USDC Vault Share\",\n  \"shareSymbol\": \"teUSDC\",\n  \"shareDecimals\": 9,\n  \"feeManager\": \"0x0000000000000000000000000000000000000000\",\n  \"withdrawManager\": \"0x0000000000000000000000000000000000000000\",\n  \"deployTimestamp\": \"1716000000\",\n  \"strategy\": {\n    \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n    \"name\": \"Conservative USDC\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d57eb12-7b60-4af0-ac7e-cbcad4898f03",
+          "name": "List transactions for a vault",
+          "request": {
+            "name": "List transactions for a vault",
+            "description": {},
+            "url": {
+              "path": [
+                "vaults",
+                ":vault",
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vault",
+                  "description": "(Required) Vault contract address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "92dee8ab-2bc5-4b48-8247-0017ab9b5dd0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vaults",
+                    ":vault",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vault",
+                      "description": "(Required) Vault contract address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"hash\": \"0xabc123...\",\n    \"vaultAddress\": \"0x5ddd313916c0662fae20b33e54836f03866252ec\",\n    \"type\": \"deposit\",\n    \"clientAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n    \"timestamp\": \"1716000000\",\n    \"from\": \"0x1234567890abcdef1234567890abcdef12345678\",\n    \"events\": [\n      {\n        \"eventName\": \"Deposit\",\n        \"args\": {\n          \"account\": \"0x...\",\n          \"amount\": \"1000000\"\n        }\n      },\n      {\n        \"eventName\": \"Deposit\",\n        \"args\": {\n          \"account\": \"0x...\",\n          \"amount\": \"1000000\"\n        }\n      }\n    ]\n  },\n  {\n    \"hash\": \"0xabc123...\",\n    \"vaultAddress\": \"0x5ddd313916c0662fae20b33e54836f03866252ec\",\n    \"type\": \"deposit\",\n    \"clientAddress\": \"0x1234567890abcdef1234567890abcdef12345678\",\n    \"timestamp\": \"1716000000\",\n    \"from\": \"0x1234567890abcdef1234567890abcdef12345678\",\n    \"events\": [\n      {\n        \"eventName\": \"Deposit\",\n        \"args\": {\n          \"account\": \"0x...\",\n          \"amount\": \"1000000\"\n        }\n      },\n      {\n        \"eventName\": \"Deposit\",\n        \"args\": {\n          \"account\": \"0x...\",\n          \"amount\": \"1000000\"\n        }\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dab8d0bb-8358-484c-a4d8-b0bbb1425289",
+          "name": "Set vault strategy (EIP-712 signed)",
+          "request": {
+            "name": "Set vault strategy (EIP-712 signed)",
+            "description": {},
+            "url": {
+              "path": [
+                "vaults",
+                ":vault",
+                "strategy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vault",
+                  "description": "(Required) Vault contract address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientAddress\": \"<string>\",\n  \"strategyId\": \"<string>\",\n  \"signature\": \"<string>\",\n  \"timestamp\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "207a4764-380c-44e4-b91d-93e4e43fe431",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vaults",
+                    ":vault",
+                    "strategy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vault",
+                      "description": "(Required) Vault contract address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientAddress\": \"0x1234...abcd\",\n  \"strategyId\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"signature\": \"0xabcdef...\",\n  \"timestamp\": 1716000000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address\": \"0x5ddd313916c0662fae20b33e54836f03866252ec\",\n  \"strategyId\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"updatedBy\": \"public-api\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "eee7682b-2c66-4547-9bd8-c1f0dd35b1d4",
+    "name": "Tesseract Public clients vaults API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Client-facing API for vault data, strategies, and performance metrics.",
+      "type": "text/plain"
+    }
+  }
+}

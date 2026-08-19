@@ -2,58 +2,62 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: openapi/tesseract-public-api-openapi.json
-note: >-
-  No official hosted/remote MCP server found for Tesseract. This is a candidate
-  tool list derived one-to-one from the Tesseract Public API (vault reporting)
-  operations — read tools are unauthenticated; set_vault_strategy requires an
-  EIP-712 signature.
+note: No official hosted/remote MCP server found for Tesseract. This is a candidate tool list derived
+  one-to-one from the Tesseract Public API (vault reporting) operations — read tools are unauthenticated;
+  set_vault_strategy requires an EIP-712 signature.
 server:
   name: tesseract-public-api
   transport: http
   base_url: https://api.vault.tesseract.fi
 tools:
-  - name: check_health
-    description: Health check.
-    source_operation: openapi/tesseract-public-api-openapi.json#HealthController_checkHealth
-  - name: get_client_summary
-    description: Portfolio summary for a client (weighted average APY).
-    source_operation: openapi/tesseract-public-api-openapi.json#ClientsController_getClientSummary
-  - name: list_client_vaults
-    description: List vaults for a client wallet address.
-    source_operation: openapi/tesseract-public-api-openapi.json#ClientsController_getClientVaults
-  - name: list_client_transactions
-    description: List client-initiated transactions for a client.
-    source_operation: openapi/tesseract-public-api-openapi.json#ClientsController_getClientTransactions
-  - name: get_allocations
-    description: Allocation history for a vault (stacked area chart).
-    source_operation: openapi/tesseract-public-api-openapi.json#InsightsController_getAllocations
-  - name: get_allocations_latest
-    description: Current allocation breakdown for a vault.
-    source_operation: openapi/tesseract-public-api-openapi.json#InsightsController_getAllocationsLatest
-  - name: get_performance
-    description: APY/APR history for a vault.
-    source_operation: openapi/tesseract-public-api-openapi.json#InsightsController_getPerformance
-  - name: get_tvl
-    description: TVL and share-price history for a vault.
-    source_operation: openapi/tesseract-public-api-openapi.json#InsightsController_getTvl
-  - name: get_vault_insights_summary
-    description: Dashboard summary with KPIs for a vault.
-    source_operation: openapi/tesseract-public-api-openapi.json#InsightsController_getSummary
-  - name: query_vaults_by_client_addresses
-    description: List vaults for multiple client wallet addresses (batch, max 25).
-    source_operation: openapi/tesseract-public-api-openapi.json#VaultsController_queryVaultsByAddresses
-  - name: get_vault_detail
-    description: Get a single vault's detail (asset, shares, fees, status).
-    source_operation: openapi/tesseract-public-api-openapi.json#VaultsController_getVaultDetail
-  - name: list_vault_transactions
-    description: List transactions for a vault.
-    source_operation: openapi/tesseract-public-api-openapi.json#VaultsController_getVaultTransactions
-  - name: set_vault_strategy
-    description: Assign a strategy to a deployed vault (EIP-712 signed by vault owner).
-    source_operation: openapi/tesseract-public-api-openapi.json#VaultsController_setStrategy
-  - name: list_strategies
-    description: List all available strategies.
-    source_operation: openapi/tesseract-public-api-openapi.json#StrategiesController_getStrategies
-  - name: get_strategy
-    description: Get a strategy by ID.
-    source_operation: openapi/tesseract-public-api-openapi.json#StrategiesController_getStrategy
+- name: check_health
+  description: Health check.
+  source_operation: openapi/tesseract-public-api-openapi.json#HealthController_checkHealth
+- name: get_client_summary
+  description: Portfolio summary for a client (weighted average APY).
+  source_operation: openapi/tesseract-public-api-openapi.json#ClientsController_getClientSummary
+- name: list_client_vaults
+  description: List vaults for a client wallet address.
+  source_operation: openapi/tesseract-public-api-openapi.json#ClientsController_getClientVaults
+- name: list_client_transactions
+  description: List client-initiated transactions for a client.
+  source_operation: openapi/tesseract-public-api-openapi.json#ClientsController_getClientTransactions
+- name: get_allocations
+  description: Allocation history for a vault (stacked area chart).
+  source_operation: openapi/tesseract-public-api-openapi.json#InsightsController_getAllocations
+- name: get_allocations_latest
+  description: Current allocation breakdown for a vault.
+  source_operation: openapi/tesseract-public-api-openapi.json#InsightsController_getAllocationsLatest
+- name: get_performance
+  description: APY/APR history for a vault.
+  source_operation: openapi/tesseract-public-api-openapi.json#InsightsController_getPerformance
+- name: get_tvl
+  description: TVL and share-price history for a vault.
+  source_operation: openapi/tesseract-public-api-openapi.json#InsightsController_getTvl
+- name: get_vault_insights_summary
+  description: Dashboard summary with KPIs for a vault.
+  source_operation: openapi/tesseract-public-api-openapi.json#InsightsController_getSummary
+- name: query_vaults_by_client_addresses
+  description: List vaults for multiple client wallet addresses (batch, max 25).
+  source_operation: openapi/tesseract-public-api-openapi.json#VaultsController_queryVaultsByAddresses
+- name: get_vault_detail
+  description: Get a single vault's detail (asset, shares, fees, status).
+  source_operation: openapi/tesseract-public-api-openapi.json#VaultsController_getVaultDetail
+- name: list_vault_transactions
+  description: List transactions for a vault.
+  source_operation: openapi/tesseract-public-api-openapi.json#VaultsController_getVaultTransactions
+- name: set_vault_strategy
+  description: Assign a strategy to a deployed vault (EIP-712 signed by vault owner).
+  source_operation: openapi/tesseract-public-api-openapi.json#VaultsController_setStrategy
+- name: list_strategies
+  description: List all available strategies.
+  source_operation: openapi/tesseract-public-api-openapi.json#StrategiesController_getStrategies
+- name: get_strategy
+  description: Get a strategy by ID.
+  source_operation: openapi/tesseract-public-api-openapi.json#StrategiesController_getStrategy
+deployment:
+  mode: none
+  verified: derived
+  tools: 15
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -1,0 +1,182 @@
+{
+  "item": [
+    {
+      "id": "dd684ecc-ba79-457a-af03-f14f58d0ee62",
+      "name": "strategies",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2775b8a6-8369-42f7-a949-362e1fc2be3e",
+          "name": "List all strategies",
+          "request": {
+            "name": "List all strategies",
+            "description": {},
+            "url": {
+              "path": [
+                "strategies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e2193ea-6745-4a71-a527-646b687d8e91",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "strategies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n    \"name\": \"Conservative USDC\",\n    \"asset\": \"USDC\",\n    \"description\": {},\n    \"deployerAddress\": \"0xfC6C59AbA3F9D63A351C7Ea1ba0B48714BFdA2da\",\n    \"expectedApy\": {},\n    \"dashboardDescription\": {},\n    \"dashboardWithdrawals\": {},\n    \"learnMoreLink\": {},\n    \"createdAt\": \"2025-01-15T10:00:00.000Z\",\n    \"updatedAt\": \"2025-01-15T10:00:00.000Z\"\n  },\n  {\n    \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n    \"name\": \"Conservative USDC\",\n    \"asset\": \"USDC\",\n    \"description\": {},\n    \"deployerAddress\": \"0xfC6C59AbA3F9D63A351C7Ea1ba0B48714BFdA2da\",\n    \"expectedApy\": {},\n    \"dashboardDescription\": {},\n    \"dashboardWithdrawals\": {},\n    \"learnMoreLink\": {},\n    \"createdAt\": \"2025-01-15T10:00:00.000Z\",\n    \"updatedAt\": \"2025-01-15T10:00:00.000Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f929899c-6107-4da8-8be1-8331e5b8f4af",
+          "name": "Get strategy by ID",
+          "request": {
+            "name": "Get strategy by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "strategies",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Strategy UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "05d3e6e0-4680-4e8b-b64f-0395d755bc19",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "strategies",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Strategy UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"name\": \"Conservative USDC\",\n  \"asset\": \"USDC\",\n  \"description\": {},\n  \"deployerAddress\": \"0xfC6C59AbA3F9D63A351C7Ea1ba0B48714BFdA2da\",\n  \"expectedApy\": {},\n  \"dashboardDescription\": {},\n  \"dashboardWithdrawals\": {},\n  \"learnMoreLink\": {},\n  \"createdAt\": \"2025-01-15T10:00:00.000Z\",\n  \"updatedAt\": \"2025-01-15T10:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c065eedd-ffc3-4511-821b-e791f0bade76",
+    "name": "Tesseract Public clients strategies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Client-facing API for vault data, strategies, and performance metrics.",
+      "type": "text/plain"
+    }
+  }
+}

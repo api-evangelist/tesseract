@@ -1,0 +1,530 @@
+{
+  "item": [
+    {
+      "id": "892b4ce5-a304-4d87-895a-55001ca953f5",
+      "name": "insights",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2d318cb8-8bd4-4c6a-b931-90d3cd81eb6a",
+          "name": "Allocation history for stacked area chart",
+          "request": {
+            "name": "Allocation history for stacked area chart",
+            "description": {},
+            "url": {
+              "path": [
+                "insights",
+                ":vaultAddress",
+                "allocations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "ISO 8601 start date (defaults to 30 days ago)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "ISO 8601 end date"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vaultAddress",
+                  "description": "(Required) Vault contract address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5973b451-7b05-472c-bf6b-d76ab8d1a8cd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    ":vaultAddress",
+                    "allocations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vaultAddress",
+                      "description": "(Required) Vault contract address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vaultAddress\": \"0x3b3bdaa4462851621818d2cebc835e077587147a\",\n  \"chainId\": 1,\n  \"series\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ab242bc-2d4c-4280-aa08-0ae10b435bbb",
+          "name": "Current allocation breakdown for pie/donut chart",
+          "request": {
+            "name": "Current allocation breakdown for pie/donut chart",
+            "description": {},
+            "url": {
+              "path": [
+                "insights",
+                ":vaultAddress",
+                "allocations",
+                "latest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vaultAddress",
+                  "description": "(Required) Vault contract address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4339f92-25fd-4608-8014-a5df596c6228",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    ":vaultAddress",
+                    "allocations",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vaultAddress",
+                      "description": "(Required) Vault contract address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vaultAddress\": \"0x3b3bdaa4462851621818d2cebc835e077587147a\",\n  \"chainId\": 1,\n  \"timestamp\": \"2026-03-01T00:00:00.000Z\",\n  \"blockNumber\": 24357173,\n  \"allocations\": [],\n  \"totalUsd\": \"422478.39\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19071b05-395e-4517-aefb-0cccd99547cf",
+          "name": "APY/APR history for line chart",
+          "request": {
+            "name": "APY/APR history for line chart",
+            "description": {},
+            "url": {
+              "path": [
+                "insights",
+                ":vaultAddress",
+                "performance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "ISO 8601 start date (defaults to 30 days ago)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "ISO 8601 end date"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vaultAddress",
+                  "description": "(Required) Vault contract address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3e81b65-1922-460b-aba6-5669e03a55fc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    ":vaultAddress",
+                    "performance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vaultAddress",
+                      "description": "(Required) Vault contract address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vaultAddress\": \"0x3b3bdaa4462851621818d2cebc835e077587147a\",\n  \"chainId\": 1,\n  \"series\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8c0855d-4819-4566-9829-6b13632a5cb9",
+          "name": "TVL and share price history for area chart",
+          "request": {
+            "name": "TVL and share price history for area chart",
+            "description": {},
+            "url": {
+              "path": [
+                "insights",
+                ":vaultAddress",
+                "tvl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "ISO 8601 start date (defaults to 30 days ago)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "ISO 8601 end date"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vaultAddress",
+                  "description": "(Required) Vault contract address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6abe0755-ea34-465d-b40a-e3e1e5e5803e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    ":vaultAddress",
+                    "tvl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vaultAddress",
+                      "description": "(Required) Vault contract address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vaultAddress\": \"0x3b3bdaa4462851621818d2cebc835e077587147a\",\n  \"chainId\": 1,\n  \"series\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0e41313-0a4a-4467-bfbc-bb92f11281e2",
+          "name": "Dashboard summary with KPIs",
+          "request": {
+            "name": "Dashboard summary with KPIs",
+            "description": {},
+            "url": {
+              "path": [
+                "insights",
+                ":vaultAddress",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vaultAddress",
+                  "description": "(Required) Vault contract address"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2f36f2d-30bd-490a-a769-1f972564ada4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    ":vaultAddress",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vaultAddress",
+                      "description": "(Required) Vault contract address"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vaultAddress\": \"0x3b3bdaa4462851621818d2cebc835e077587147a\",\n  \"chainId\": 1,\n  \"currentTvl\": \"422478.39\",\n  \"currentApy\": \"5.234567\",\n  \"tvlChange24h\": \"1234.56\",\n  \"tvlChangePct24h\": \"0.2934\",\n  \"apyAvg7d\": \"5.123456\",\n  \"apyAvg30d\": \"4.987654\",\n  \"totalMarkets\": 5,\n  \"lastSyncedAt\": \"2026-03-01T00:00:00.000Z\",\n  \"lastBlockNumber\": 24357173,\n  \"totalDeposited\": \"1000000000\",\n  \"totalWithdrawn\": \"200000000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2d03bc54-6c5c-4edf-9279-992458488dac",
+    "name": "Tesseract Public clients insights API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Client-facing API for vault data, strategies, and performance metrics.",
+      "type": "text/plain"
+    }
+  }
+}
