@@ -124,7 +124,7 @@ apis:
   humanURL: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md
   baseURL: https://api.vault.tesseract.fi
   tags:
-  - strategies
+  - Strategies
   tags_raw:
   - strategies
   properties:
@@ -138,7 +138,7 @@ apis:
   humanURL: https://docs.tesseract.fi/dedicated-client-vaults/reference/public-api.md
   baseURL: https://api.vault.tesseract.fi
   tags:
-  - vaults
+  - Vault
   tags_raw:
   - vaults
   properties:
