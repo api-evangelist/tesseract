@@ -1,12 +1,12 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Tesseract Public clients insights API
+  title: Tesseract Public Insights API
   description: Client-facing API for vault data, strategies, and performance metrics.
   version: 0.1.0
   contact: {}
 servers: []
 tags:
-- name: insights
+- name: Insights
 paths:
   /insights/{vaultAddress}/allocations:
     get:
@@ -39,7 +39,7 @@ paths:
                 $ref: '#/components/schemas/AllocationHistoryModel'
       summary: Allocation history for stacked area chart
       tags:
-      - insights
+      - Insights
   /insights/{vaultAddress}/allocations/latest:
     get:
       operationId: InsightsController_getAllocationsLatest
@@ -59,7 +59,7 @@ paths:
                 $ref: '#/components/schemas/AllocationLatestModel'
       summary: Current allocation breakdown for pie/donut chart
       tags:
-      - insights
+      - Insights
   /insights/{vaultAddress}/performance:
     get:
       operationId: InsightsController_getPerformance
@@ -91,7 +91,7 @@ paths:
                 $ref: '#/components/schemas/PerformanceHistoryModel'
       summary: APY/APR history for line chart
       tags:
-      - insights
+      - Insights
   /insights/{vaultAddress}/tvl:
     get:
       operationId: InsightsController_getTvl
@@ -123,7 +123,7 @@ paths:
                 $ref: '#/components/schemas/TvlHistoryModel'
       summary: TVL and share price history for area chart
       tags:
-      - insights
+      - Insights
   /insights/{vaultAddress}/summary:
     get:
       operationId: InsightsController_getSummary
@@ -143,10 +143,27 @@ paths:
                 $ref: '#/components/schemas/SummaryModel'
       summary: Dashboard summary with KPIs
       tags:
-      - insights
+      - Insights
 components:
   schemas:
     AllocationHistoryModel:
+      type: object
+      properties:
+        vaultAddress:
+          type: string
+          example: '0x3b3bdaa4462851621818d2cebc835e077587147a'
+        chainId:
+          type: number
+          example: 1
+        series:
+          type: array
+          items:
+            type: object
+      required:
+      - vaultAddress
+      - chainId
+      - series
+    PerformanceHistoryModel:
       type: object
       properties:
         vaultAddress:
@@ -248,23 +265,6 @@ components:
       - lastBlockNumber
       - totalDeposited
       - totalWithdrawn
-    PerformanceHistoryModel:
-      type: object
-      properties:
-        vaultAddress:
-          type: string
-          example: '0x3b3bdaa4462851621818d2cebc835e077587147a'
-        chainId:
-          type: number
-          example: 1
-        series:
-          type: array
-          items:
-            type: object
-      required:
-      - vaultAddress
-      - chainId
-      - series
     TvlHistoryModel:
       type: object
       properties:

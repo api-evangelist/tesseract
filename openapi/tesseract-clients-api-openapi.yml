@@ -1,12 +1,12 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Tesseract Public clients API
+  title: Tesseract Public Clients API
   description: Client-facing API for vault data, strategies, and performance metrics.
   version: 0.1.0
   contact: {}
 servers: []
 tags:
-- name: clients
+- name: Clients
 paths:
   /clients/{client}/summary:
     get:
@@ -27,7 +27,7 @@ paths:
                 $ref: '#/components/schemas/ClientSummaryModel'
       summary: Portfolio summary for a client (weighted avg APY)
       tags:
-      - clients
+      - Clients
   /clients/{client}/vaults:
     get:
       operationId: ClientsController_getClientVaults
@@ -49,7 +49,7 @@ paths:
                   $ref: '#/components/schemas/PublicVaultModel'
       summary: List vaults for a client
       tags:
-      - clients
+      - Clients
   /clients/{client}/transactions:
     get:
       operationId: ClientsController_getClientTransactions
@@ -88,25 +88,9 @@ paths:
                   $ref: '#/components/schemas/VaultTransactionModel'
       summary: List client-initiated transactions for a client
       tags:
-      - clients
+      - Clients
 components:
   schemas:
-    ClientSummaryModel:
-      type: object
-      properties:
-        clientAddress:
-          type: string
-          example: '0x1234567890abcdef1234567890abcdef12345678'
-        weightedAvgApy:
-          type: string
-          example: '5.234567'
-        vaultCount:
-          type: number
-          example: 3
-      required:
-      - clientAddress
-      - weightedAvgApy
-      - vaultCount
     PublicVaultStrategy:
       type: object
       properties:
@@ -119,20 +103,6 @@ components:
       required:
       - id
       - name
-    VaultEventModel:
-      type: object
-      properties:
-        eventName:
-          type: string
-          example: Deposit
-        args:
-          type: object
-          example:
-            account: 0x...
-            amount: '1000000'
-      required:
-      - eventName
-      - args
     VaultTransactionModel:
       type: object
       properties:
@@ -220,8 +190,9 @@ components:
           type: string
           example: '1716000000'
         strategy:
-          nullable: true
-          type: object
+          type:
+          - object
+          - 'null'
           allOf:
           - $ref: '#/components/schemas/PublicVaultStrategy'
       required:
@@ -240,3 +211,33 @@ components:
       - withdrawManager
       - deployTimestamp
       - strategy
+    VaultEventModel:
+      type: object
+      properties:
+        eventName:
+          type: string
+          example: Deposit
+        args:
+          type: object
+          example:
+            account: 0x...
+            amount: '1000000'
+      required:
+      - eventName
+      - args
+    ClientSummaryModel:
+      type: object
+      properties:
+        clientAddress:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        weightedAvgApy:
+          type: string
+          example: '5.234567'
+        vaultCount:
+          type: number
+          example: 3
+      required:
+      - clientAddress
+      - weightedAvgApy
+      - vaultCount

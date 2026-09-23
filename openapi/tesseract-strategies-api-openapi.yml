@@ -1,12 +1,12 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Tesseract Public clients strategies API
+  title: Tesseract Public Strategies API
   description: Client-facing API for vault data, strategies, and performance metrics.
   version: 0.1.0
   contact: {}
 servers: []
 tags:
-- name: strategies
+- name: Strategies
 paths:
   /strategies:
     get:
@@ -23,7 +23,7 @@ paths:
                   $ref: '#/components/schemas/StrategyModel'
       summary: List all strategies
       tags:
-      - strategies
+      - Strategies
   /strategies/{id}:
     get:
       operationId: StrategiesController_getStrategy
@@ -43,7 +43,7 @@ paths:
                 $ref: '#/components/schemas/StrategyModel'
       summary: Get strategy by ID
       tags:
-      - strategies
+      - Strategies
 components:
   schemas:
     StrategyModel:
@@ -59,27 +59,32 @@ components:
           type: string
           example: USDC
         description:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           example: Low-risk stablecoin strategy
         deployerAddress:
           type: string
           example: '0xfC6C59AbA3F9D63A351C7Ea1ba0B48714BFdA2da'
         expectedApy:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           example: 4-6%
         dashboardDescription:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           example: A conservative stablecoin lending strategy…
         dashboardWithdrawals:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           example: 24h
         learnMoreLink:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           example: https://tesseract.fi/strategies/usdc-conservative
         createdAt:
           type: string

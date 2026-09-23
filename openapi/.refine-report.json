@@ -1,11 +1,7 @@
 {
   "provider": "tesseract",
   "sources": [
-    "tesseract-clients-api-openapi.yml",
-    "tesseract-health-api-openapi.yml",
-    "tesseract-insights-api-openapi.yml",
-    "tesseract-strategies-api-openapi.yml",
-    "tesseract-vaults-api-openapi.yml"
+    "_original/tesseract-public-api-openapi.json"
   ],
   "outputs": [
     "tesseract-clients-api-openapi.yml",
@@ -17,6 +13,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "tesseract-public-api-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "tesseract-public-api-openapi.json: declared missing tag: clients",
+    "tesseract-public-api-openapi.json: declared missing tag: health",
+    "tesseract-public-api-openapi.json: declared missing tag: insights",
+    "tesseract-public-api-openapi.json: declared missing tag: strategies",
+    "tesseract-public-api-openapi.json: declared missing tag: vaults",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "tesseract-clients-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tesseract-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tesseract-insights-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tesseract-strategies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tesseract-vaults-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

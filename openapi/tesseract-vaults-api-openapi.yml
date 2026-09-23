@@ -1,12 +1,12 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Tesseract Public clients vaults API
+  title: Tesseract Public Vaults API
   description: Client-facing API for vault data, strategies, and performance metrics.
   version: 0.1.0
   contact: {}
 servers: []
 tags:
-- name: vaults
+- name: Vaults
 paths:
   /vaults/query/by-client-addresses:
     post:
@@ -29,7 +29,7 @@ paths:
                   $ref: '#/components/schemas/PublicVaultModel'
       summary: List vaults for multiple client wallet addresses
       tags:
-      - vaults
+      - Vaults
   /vaults/{vault}:
     get:
       operationId: VaultsController_getVaultDetail
@@ -49,7 +49,7 @@ paths:
                 $ref: '#/components/schemas/PublicVaultModel'
       summary: Get vault detail
       tags:
-      - vaults
+      - Vaults
   /vaults/{vault}/transactions:
     get:
       operationId: VaultsController_getVaultTransactions
@@ -83,7 +83,7 @@ paths:
                   $ref: '#/components/schemas/VaultTransactionModel'
       summary: List transactions for a vault
       tags:
-      - vaults
+      - Vaults
   /vaults/{vault}/strategy:
     put:
       operationId: VaultsController_setStrategy
@@ -109,7 +109,7 @@ paths:
                 $ref: '#/components/schemas/SetStrategyResponseModel'
       summary: Set vault strategy (EIP-712 signed)
       tags:
-      - vaults
+      - Vaults
 components:
   schemas:
     PublicVaultStrategy:
@@ -124,71 +124,6 @@ components:
       required:
       - id
       - name
-    BatchVaultsByAddressDto:
-      type: object
-      properties:
-        addresses:
-          description: Client wallet addresses (depositor addresses) to list vaults for.
-          minItems: 1
-          maxItems: 25
-          example:
-          - '0x0000000000000000000000000000000000000001'
-          type: array
-          items:
-            type: string
-      required:
-      - addresses
-    SetStrategyResponseModel:
-      type: object
-      properties:
-        address:
-          type: string
-          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
-        strategyId:
-          type: string
-          example: 550e8400-e29b-41d4-a716-446655440000
-        updatedBy:
-          type: string
-          example: public-api
-      required:
-      - address
-      - strategyId
-      - updatedBy
-    VaultEventModel:
-      type: object
-      properties:
-        eventName:
-          type: string
-          example: Deposit
-        args:
-          type: object
-          example:
-            account: 0x...
-            amount: '1000000'
-      required:
-      - eventName
-      - args
-    SetStrategyDto:
-      type: object
-      properties:
-        clientAddress:
-          type: string
-          example: 0x1234...abcd
-          description: Client wallet address (signer)
-        strategyId:
-          type: string
-          example: 550e8400-e29b-41d4-a716-446655440000
-        signature:
-          type: string
-          example: 0xabcdef...
-        timestamp:
-          type: number
-          example: 1716000000
-      required:
-      - clientAddress
-      - strategyId
-      - signature
-      - timestamp
     VaultTransactionModel:
       type: object
       properties:
@@ -276,8 +211,9 @@ components:
           type: string
           example: '1716000000'
         strategy:
-          nullable: true
-          type: object
+          type:
+          - object
+          - 'null'
           allOf:
           - $ref: '#/components/schemas/PublicVaultStrategy'
       required:
@@ -296,3 +232,68 @@ components:
       - withdrawManager
       - deployTimestamp
       - strategy
+    VaultEventModel:
+      type: object
+      properties:
+        eventName:
+          type: string
+          example: Deposit
+        args:
+          type: object
+          example:
+            account: 0x...
+            amount: '1000000'
+      required:
+      - eventName
+      - args
+    SetStrategyResponseModel:
+      type: object
+      properties:
+        address:
+          type: string
+          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
+        strategyId:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+        updatedBy:
+          type: string
+          example: public-api
+      required:
+      - address
+      - strategyId
+      - updatedBy
+    SetStrategyDto:
+      type: object
+      properties:
+        clientAddress:
+          type: string
+          example: 0x1234...abcd
+          description: Client wallet address (signer)
+        strategyId:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+        signature:
+          type: string
+          example: 0xabcdef...
+        timestamp:
+          type: number
+          example: 1716000000
+      required:
+      - clientAddress
+      - strategyId
+      - signature
+      - timestamp
+    BatchVaultsByAddressDto:
+      type: object
+      properties:
+        addresses:
+          description: Client wallet addresses (depositor addresses) to list vaults for.
+          minItems: 1
+          maxItems: 25
+          example:
+          - '0x0000000000000000000000000000000000000001'
+          type: array
+          items:
+            type: string
+      required:
+      - addresses
