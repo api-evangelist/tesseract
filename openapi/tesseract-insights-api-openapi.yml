@@ -163,7 +163,7 @@ components:
       - vaultAddress
       - chainId
       - series
-    PerformanceHistoryModel:
+    TvlHistoryModel:
       type: object
       properties:
         vaultAddress:
@@ -265,7 +265,7 @@ components:
       - lastBlockNumber
       - totalDeposited
       - totalWithdrawn
-    TvlHistoryModel:
+    PerformanceHistoryModel:
       type: object
       properties:
         vaultAddress:

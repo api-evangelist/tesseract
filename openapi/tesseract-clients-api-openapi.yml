@@ -91,18 +91,20 @@ paths:
       - Clients
 components:
   schemas:
-    PublicVaultStrategy:
+    VaultEventModel:
       type: object
       properties:
-        id:
+        eventName:
           type: string
-          example: 550e8400-e29b-41d4-a716-446655440000
-        name:
-          type: string
-          example: Conservative USDC
+          example: Deposit
+        args:
+          type: object
+          example:
+            account: 0x...
+            amount: '1000000'
       required:
-      - id
-      - name
+      - eventName
+      - args
     VaultTransactionModel:
       type: object
       properties:
@@ -211,20 +213,18 @@ components:
       - withdrawManager
       - deployTimestamp
       - strategy
-    VaultEventModel:
+    PublicVaultStrategy:
       type: object
       properties:
-        eventName:
+        id:
           type: string
-          example: Deposit
-        args:
-          type: object
-          example:
-            account: 0x...
-            amount: '1000000'
+          example: 550e8400-e29b-41d4-a716-446655440000
+        name:
+          type: string
+          example: Conservative USDC
       required:
-      - eventName
-      - args
+      - id
+      - name
     ClientSummaryModel:
       type: object
       properties:
