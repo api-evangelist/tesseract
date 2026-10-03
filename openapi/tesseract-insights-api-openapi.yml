@@ -146,40 +146,6 @@ paths:
       - Insights
 components:
   schemas:
-    AllocationHistoryModel:
-      type: object
-      properties:
-        vaultAddress:
-          type: string
-          example: '0x3b3bdaa4462851621818d2cebc835e077587147a'
-        chainId:
-          type: number
-          example: 1
-        series:
-          type: array
-          items:
-            type: object
-      required:
-      - vaultAddress
-      - chainId
-      - series
-    TvlHistoryModel:
-      type: object
-      properties:
-        vaultAddress:
-          type: string
-          example: '0x3b3bdaa4462851621818d2cebc835e077587147a'
-        chainId:
-          type: number
-          example: 1
-        series:
-          type: array
-          items:
-            type: object
-      required:
-      - vaultAddress
-      - chainId
-      - series
     AllocationLatestModel:
       type: object
       properties:
@@ -209,6 +175,40 @@ components:
       - blockNumber
       - allocations
       - totalUsd
+    TvlHistoryModel:
+      type: object
+      properties:
+        vaultAddress:
+          type: string
+          example: '0x3b3bdaa4462851621818d2cebc835e077587147a'
+        chainId:
+          type: number
+          example: 1
+        series:
+          type: array
+          items:
+            type: object
+      required:
+      - vaultAddress
+      - chainId
+      - series
+    PerformanceHistoryModel:
+      type: object
+      properties:
+        vaultAddress:
+          type: string
+          example: '0x3b3bdaa4462851621818d2cebc835e077587147a'
+        chainId:
+          type: number
+          example: 1
+        series:
+          type: array
+          items:
+            type: object
+      required:
+      - vaultAddress
+      - chainId
+      - series
     SummaryModel:
       type: object
       properties:
@@ -265,7 +265,7 @@ components:
       - lastBlockNumber
       - totalDeposited
       - totalWithdrawn
-    PerformanceHistoryModel:
+    AllocationHistoryModel:
       type: object
       properties:
         vaultAddress:

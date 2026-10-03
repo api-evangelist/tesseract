@@ -112,98 +112,6 @@ paths:
       - Vaults
 components:
   schemas:
-    SetStrategyDto:
-      type: object
-      properties:
-        clientAddress:
-          type: string
-          example: 0x1234...abcd
-          description: Client wallet address (signer)
-        strategyId:
-          type: string
-          example: 550e8400-e29b-41d4-a716-446655440000
-        signature:
-          type: string
-          example: 0xabcdef...
-        timestamp:
-          type: number
-          example: 1716000000
-      required:
-      - clientAddress
-      - strategyId
-      - signature
-      - timestamp
-    SetStrategyResponseModel:
-      type: object
-      properties:
-        address:
-          type: string
-          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
-        strategyId:
-          type: string
-          example: 550e8400-e29b-41d4-a716-446655440000
-        updatedBy:
-          type: string
-          example: public-api
-      required:
-      - address
-      - strategyId
-      - updatedBy
-    VaultEventModel:
-      type: object
-      properties:
-        eventName:
-          type: string
-          example: Deposit
-        args:
-          type: object
-          example:
-            account: 0x...
-            amount: '1000000'
-      required:
-      - eventName
-      - args
-    VaultTransactionModel:
-      type: object
-      properties:
-        hash:
-          type: string
-          example: 0xabc123...
-        vaultAddress:
-          type: string
-          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
-        type:
-          type: string
-          example: deposit
-          enum:
-          - deploy
-          - deposit
-          - withdraw
-          - execute
-          - withdraw_request
-          - release_funds
-          - target_closed
-        clientAddress:
-          type: string
-          example: '0x1234567890abcdef1234567890abcdef12345678'
-        timestamp:
-          type: string
-          example: '1716000000'
-        from:
-          type: string
-          example: '0x1234567890abcdef1234567890abcdef12345678'
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/VaultEventModel'
-      required:
-      - hash
-      - vaultAddress
-      - type
-      - clientAddress
-      - timestamp
-      - from
-      - events
     PublicVaultModel:
       type: object
       properties:
@@ -271,6 +179,34 @@ components:
       - withdrawManager
       - deployTimestamp
       - strategy
+    SetStrategyResponseModel:
+      type: object
+      properties:
+        address:
+          type: string
+          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
+        strategyId:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+        updatedBy:
+          type: string
+          example: public-api
+      required:
+      - address
+      - strategyId
+      - updatedBy
+    PublicVaultStrategy:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+        name:
+          type: string
+          example: Conservative USDC
+      required:
+      - id
+      - name
     BatchVaultsByAddressDto:
       type: object
       properties:
@@ -285,15 +221,79 @@ components:
             type: string
       required:
       - addresses
-    PublicVaultStrategy:
+    VaultTransactionModel:
       type: object
       properties:
-        id:
+        hash:
+          type: string
+          example: 0xabc123...
+        vaultAddress:
+          type: string
+          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
+        type:
+          type: string
+          example: deposit
+          enum:
+          - deploy
+          - deposit
+          - withdraw
+          - execute
+          - withdraw_request
+          - release_funds
+          - target_closed
+        clientAddress:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        timestamp:
+          type: string
+          example: '1716000000'
+        from:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/VaultEventModel'
+      required:
+      - hash
+      - vaultAddress
+      - type
+      - clientAddress
+      - timestamp
+      - from
+      - events
+    VaultEventModel:
+      type: object
+      properties:
+        eventName:
+          type: string
+          example: Deposit
+        args:
+          type: object
+          example:
+            account: 0x...
+            amount: '1000000'
+      required:
+      - eventName
+      - args
+    SetStrategyDto:
+      type: object
+      properties:
+        clientAddress:
+          type: string
+          example: 0x1234...abcd
+          description: Client wallet address (signer)
+        strategyId:
           type: string
           example: 550e8400-e29b-41d4-a716-446655440000
-        name:
+        signature:
           type: string
-          example: Conservative USDC
+          example: 0xabcdef...
+        timestamp:
+          type: number
+          example: 1716000000
       required:
-      - id
-      - name
+      - clientAddress
+      - strategyId
+      - signature
+      - timestamp
