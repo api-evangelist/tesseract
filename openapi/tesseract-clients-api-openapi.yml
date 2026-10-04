@@ -91,6 +91,59 @@ paths:
       - Clients
 components:
   schemas:
+    VaultTransactionModel:
+      type: object
+      properties:
+        hash:
+          type: string
+          example: 0xabc123...
+        vaultAddress:
+          type: string
+          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
+        type:
+          type: string
+          example: deposit
+          enum:
+          - deploy
+          - deposit
+          - withdraw
+          - execute
+          - withdraw_request
+          - release_funds
+          - target_closed
+        clientAddress:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        timestamp:
+          type: string
+          example: '1716000000'
+        from:
+          type: string
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/VaultEventModel'
+      required:
+      - hash
+      - vaultAddress
+      - type
+      - clientAddress
+      - timestamp
+      - from
+      - events
+    PublicVaultStrategy:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+        name:
+          type: string
+          example: Conservative USDC
+      required:
+      - id
+      - name
     PublicVaultModel:
       type: object
       properties:
@@ -158,59 +211,20 @@ components:
       - withdrawManager
       - deployTimestamp
       - strategy
-    PublicVaultStrategy:
+    VaultEventModel:
       type: object
       properties:
-        id:
+        eventName:
           type: string
-          example: 550e8400-e29b-41d4-a716-446655440000
-        name:
-          type: string
-          example: Conservative USDC
+          example: Deposit
+        args:
+          type: object
+          example:
+            account: 0x...
+            amount: '1000000'
       required:
-      - id
-      - name
-    VaultTransactionModel:
-      type: object
-      properties:
-        hash:
-          type: string
-          example: 0xabc123...
-        vaultAddress:
-          type: string
-          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
-        type:
-          type: string
-          example: deposit
-          enum:
-          - deploy
-          - deposit
-          - withdraw
-          - execute
-          - withdraw_request
-          - release_funds
-          - target_closed
-        clientAddress:
-          type: string
-          example: '0x1234567890abcdef1234567890abcdef12345678'
-        timestamp:
-          type: string
-          example: '1716000000'
-        from:
-          type: string
-          example: '0x1234567890abcdef1234567890abcdef12345678'
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/VaultEventModel'
-      required:
-      - hash
-      - vaultAddress
-      - type
-      - clientAddress
-      - timestamp
-      - from
-      - events
+      - eventName
+      - args
     ClientSummaryModel:
       type: object
       properties:
@@ -227,17 +241,3 @@ components:
       - clientAddress
       - weightedAvgApy
       - vaultCount
-    VaultEventModel:
-      type: object
-      properties:
-        eventName:
-          type: string
-          example: Deposit
-        args:
-          type: object
-          example:
-            account: 0x...
-            amount: '1000000'
-      required:
-      - eventName
-      - args
