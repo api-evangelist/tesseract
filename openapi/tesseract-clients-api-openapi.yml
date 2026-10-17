@@ -91,6 +91,18 @@ paths:
       - Clients
 components:
   schemas:
+    PublicVaultStrategy:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+        name:
+          type: string
+          example: Conservative USDC
+      required:
+      - id
+      - name
     VaultTransactionModel:
       type: object
       properties:
@@ -132,18 +144,36 @@ components:
       - timestamp
       - from
       - events
-    PublicVaultStrategy:
+    ClientSummaryModel:
       type: object
       properties:
-        id:
+        clientAddress:
           type: string
-          example: 550e8400-e29b-41d4-a716-446655440000
-        name:
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        weightedAvgApy:
           type: string
-          example: Conservative USDC
+          example: '5.234567'
+        vaultCount:
+          type: number
+          example: 3
       required:
-      - id
-      - name
+      - clientAddress
+      - weightedAvgApy
+      - vaultCount
+    VaultEventModel:
+      type: object
+      properties:
+        eventName:
+          type: string
+          example: Deposit
+        args:
+          type: object
+          example:
+            account: 0x...
+            amount: '1000000'
+      required:
+      - eventName
+      - args
     PublicVaultModel:
       type: object
       properties:
@@ -211,33 +241,3 @@ components:
       - withdrawManager
       - deployTimestamp
       - strategy
-    VaultEventModel:
-      type: object
-      properties:
-        eventName:
-          type: string
-          example: Deposit
-        args:
-          type: object
-          example:
-            account: 0x...
-            amount: '1000000'
-      required:
-      - eventName
-      - args
-    ClientSummaryModel:
-      type: object
-      properties:
-        clientAddress:
-          type: string
-          example: '0x1234567890abcdef1234567890abcdef12345678'
-        weightedAvgApy:
-          type: string
-          example: '5.234567'
-        vaultCount:
-          type: number
-          example: 3
-      required:
-      - clientAddress
-      - weightedAvgApy
-      - vaultCount

@@ -112,6 +112,18 @@ paths:
       - Vaults
 components:
   schemas:
+    PublicVaultStrategy:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+        name:
+          type: string
+          example: Conservative USDC
+      required:
+      - id
+      - name
     VaultTransactionModel:
       type: object
       properties:
@@ -153,18 +165,6 @@ components:
       - timestamp
       - from
       - events
-    PublicVaultStrategy:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 550e8400-e29b-41d4-a716-446655440000
-        name:
-          type: string
-          example: Conservative USDC
-      required:
-      - id
-      - name
     VaultEventModel:
       type: object
       properties:
@@ -179,6 +179,57 @@ components:
       required:
       - eventName
       - args
+    SetStrategyResponseModel:
+      type: object
+      properties:
+        address:
+          type: string
+          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
+        strategyId:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+        updatedBy:
+          type: string
+          example: public-api
+      required:
+      - address
+      - strategyId
+      - updatedBy
+    SetStrategyDto:
+      type: object
+      properties:
+        clientAddress:
+          type: string
+          example: 0x1234...abcd
+          description: Client wallet address (signer)
+        strategyId:
+          type: string
+          example: 550e8400-e29b-41d4-a716-446655440000
+        signature:
+          type: string
+          example: 0xabcdef...
+        timestamp:
+          type: number
+          example: 1716000000
+      required:
+      - clientAddress
+      - strategyId
+      - signature
+      - timestamp
+    BatchVaultsByAddressDto:
+      type: object
+      properties:
+        addresses:
+          description: Client wallet addresses (depositor addresses) to list vaults for.
+          minItems: 1
+          maxItems: 25
+          example:
+          - '0x0000000000000000000000000000000000000001'
+          type: array
+          items:
+            type: string
+      required:
+      - addresses
     PublicVaultModel:
       type: object
       properties:
@@ -246,54 +297,3 @@ components:
       - withdrawManager
       - deployTimestamp
       - strategy
-    SetStrategyDto:
-      type: object
-      properties:
-        clientAddress:
-          type: string
-          example: 0x1234...abcd
-          description: Client wallet address (signer)
-        strategyId:
-          type: string
-          example: 550e8400-e29b-41d4-a716-446655440000
-        signature:
-          type: string
-          example: 0xabcdef...
-        timestamp:
-          type: number
-          example: 1716000000
-      required:
-      - clientAddress
-      - strategyId
-      - signature
-      - timestamp
-    BatchVaultsByAddressDto:
-      type: object
-      properties:
-        addresses:
-          description: Client wallet addresses (depositor addresses) to list vaults for.
-          minItems: 1
-          maxItems: 25
-          example:
-          - '0x0000000000000000000000000000000000000001'
-          type: array
-          items:
-            type: string
-      required:
-      - addresses
-    SetStrategyResponseModel:
-      type: object
-      properties:
-        address:
-          type: string
-          example: '0x5ddd313916c0662fae20b33e54836f03866252ec'
-        strategyId:
-          type: string
-          example: 550e8400-e29b-41d4-a716-446655440000
-        updatedBy:
-          type: string
-          example: public-api
-      required:
-      - address
-      - strategyId
-      - updatedBy
