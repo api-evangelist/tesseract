@@ -64,6 +64,121 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Tesseract is a company surfaced as a portfolio company of sapphire-ventures and added to the API Evangelist network as a stub for enrichment. Sector: fintech. This profile is a lead awaiting the enrichment pipeline.
+Tesseract is a Finnish digital-asset management and crypto-lending company. Tesseract Investment Oy is authorised as a Crypto-Asset Service Provider (CASP) under Regulation (EU) 2023/1114 (MiCA) and supervised by the Finnish Financial Supervisory Authority (FIN-FSA). It operates institutional-grade, per-client on-chain Dedicated Client Vaults (DCVs) on Ethereum mainnet, an Earn API that lets exchanges, neobanks and fintechs offer crypto yield to their users under their own brand, and Earn Direct for referred clients. Developers integrate via a public vault reporting API (unauthenticated reads, EIP-712 signed strategy assignment) and a partner Earn API using OAuth2 client-credentials with a daily net-settlement model.
 
-Backed by: sapphire-ventures — https://tesseractinvestment.com/
+**Areas:** Company · Fintech · Cryptocurrency · DeFi · Lending · Yield · Digital Assets · Ethereum · MiCA · Vault · Institutional
+
+## Tesseract on APIs.io
+
+Everything profiled for Tesseract is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/tesseract/](https://apis.io/providers/tesseract/)** — or go straight to one of the APIs or properties below.
+
+### APIs (5)
+
+- [Tesseract Clients API](https://apis.io/apis/tesseract/tesseract-clients-api/) — The clients API from Tesseract — 3 operation(s) for clients.
+- [Tesseract Health API](https://apis.io/apis/tesseract/tesseract-health-api/) — The health API from Tesseract — 1 operation(s) for health.
+- [Tesseract Insights API](https://apis.io/apis/tesseract/tesseract-insights-api/) — The insights API from Tesseract — 5 operation(s) for insights.
+- [Tesseract Strategies API](https://apis.io/apis/tesseract/tesseract-strategies-api/) — The strategies API from Tesseract — 2 operation(s) for strategies.
+- [Tesseract Vaults API](https://apis.io/apis/tesseract/tesseract-vaults-api/) — The vaults API from Tesseract — 4 operation(s) for vaults.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [tesseract-public-api](https://apis.io/servers/tesseract/tesseract-public-api/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Tesseract Public clients API](https://apis.io/collections/tesseract/open-tesseract-clients-api/)
+- [Tesseract Public clients health API](https://apis.io/collections/tesseract/open-tesseract-health-api/)
+- [Tesseract Public clients insights API](https://apis.io/collections/tesseract/open-tesseract-insights-api/)
+- [Tesseract Public clients strategies API](https://apis.io/collections/tesseract/open-tesseract-strategies-api/)
+- [Tesseract Public clients vaults API](https://apis.io/collections/tesseract/open-tesseract-vaults-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Tesseract Public Api Overlay](https://apis.io/overlays/tesseract/tesseract-public-api-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Tesseract Authentication](https://apis.io/security/tesseract/tesseract-authentication/)
+- [Tesseract Domain Security](https://apis.io/security/tesseract/tesseract-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://tesseract.fi/)
+- [Documentation](https://docs.tesseract.fi/)
+- [Getting started](https://docs.tesseract.fi/dedicated-client-vaults/integration-guide.md)
+- [API reference](https://api.vault.tesseract.fi/public/docs)
+- [Pricing](https://docs.tesseract.fi/dedicated-client-vaults/fees-and-commercial-model.md)
+- [Support](https://tesseract.fi/contact/)
+- [Blog](https://tesseract.fi/news/)
+- [Compliance](https://docs.tesseract.fi/tesseract/security-and-compliance.md)
+- [Terms of service](https://tesseract.fi/terms/)
+- [Privacy policy](https://tesseract.fi/privacy-notice/)
+
+## API Evangelist rating
+
+**Kin Score 42.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 33.6 |
+| Contract governance | 18.2 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 46.1 |
+
+**Agent readiness 23.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 29.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/tesseract/](https://apis.io/providers/tesseract/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Tesseract: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/tesseract/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
